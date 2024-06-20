@@ -1,5 +1,6 @@
-x-environment: 
-&default-back-environment
+version: "3.5"
+
+x-environment: &default-back-environment
   # These environment variables will be used by taiga-back and taiga-async.
   # Database settings
   POSTGRES_DB: "taiga"
@@ -28,11 +29,10 @@ x-environment:
   # ...your customizations go here
 
 x-volumes:
-  default-back-volumes:
-    &default-back-volumes # These volumes will be used by taiga-back and taiga-async.
-    - taiga-static-data:/taiga-back/static
-    - taiga-media-data:/taiga-back/media
-    # - ./config.py:/taiga-back/settings/config.py
+  &default-back-volumes # These volumes will be used by taiga-back and taiga-async.
+  - taiga-static-data:/taiga-back/static
+  - taiga-media-data:/taiga-back/media
+  # - ./config.py:/taiga-back/settings/config.py
 
 services:
   taiga-db:

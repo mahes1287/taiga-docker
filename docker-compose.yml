@@ -122,9 +122,10 @@ services:
   taiga-gateway:
     image: "nginx:1.19-alpine"
     ports:
-      - "9000:80"
+      - "9001:80"
     volumes:
-      - "./taiga-gateway/default.conf:/etc/nginx/conf.d/default.conf"
+      # - "./taiga-gateway/default.conf:/etc/nginx/conf.d/default.conf"
+      - "./taiga-gateway/:/etc/nginx/conf.d/"
       - "taiga-static-data:/taiga/static"
       - "taiga-media-data:/taiga/media"
     networks:
